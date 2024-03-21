@@ -1,0 +1,23 @@
+<div class="wrapper">
+  <nav class="toolbar">
+      <div class="logo">StoreCone</div>
+      <ul class="menu">
+          <li class="dropdown">
+              <a routerLink="/listaP" routerLinkActive="active">Productos &#9660;</a>
+              <ul class="dropdown-content">
+                  <li><a routerLink="/registrarp">Registrar / P</a></li>
+              </ul>
+          </li>
+          <li class="dropdown">
+              <a routerLink="/mermas" routerLinkActive="active">Mermas &#9660;</a>
+              <ul class="dropdown-content">
+                  <li><a routerLink="/registrarm">Registrar / M</a></li>
+              </ul>
+          </li>
+          <li><a routerLink="/registrar-mermas" routerLinkActive="active">Cerrar sesión</a></li>
+      </ul>
+  </nav>
+  <div class="content">
+      <router-outlet></router-outlet>
+  </div>
+</div>
