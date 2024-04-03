@@ -11,6 +11,15 @@ import { HerramientasComponent } from './components/herramientas/herramientas.co
 import { RegistrarMermasComponent } from './components/registrar-mermas/registrar-mermas.component';
 import { ProdListComponent } from './components/prod-list/prod-list.component';
 import { RegistrarProdComponent } from './components/registrar-prod/registrar-prod.component';
+import { ProveedorListComponent } from './components/proveedor-list/proveedor-list.component';
+import { RegistrarProveComponent } from './components/registrar-prove/registrar-prove.component';
+import { AnalisisComponent } from './components/analisis/analisis.component';
+import { MermasListComponent } from './components/mermas-list/mermas-list.component';
+
+import { HttpClientModule, provideHttpClient, withFetch } from '@angular/common/http';
+
+import { FormsModule } from '@angular/forms';
+import { RegistrarUserComponent } from './components/registrar-user/registrar-user.component';
 
 @NgModule({
   declarations: [
@@ -20,13 +29,22 @@ import { RegistrarProdComponent } from './components/registrar-prod/registrar-pr
     HerramientasComponent,
     RegistrarMermasComponent,
     ProdListComponent,
-    RegistrarProdComponent
+    RegistrarProdComponent,
+    ProveedorListComponent,
+    RegistrarProveComponent,
+    AnalisisComponent,
+    MermasListComponent,
+    RegistrarUserComponent
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    HttpClientModule,
+    FormsModule
   ],
-  providers: [],
+  providers: [
+    provideHttpClient(withFetch())
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

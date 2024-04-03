@@ -3,23 +3,24 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Registro de Producto</title>
 </head>
 <app-herramientas></app-herramientas>
+<body>
     <h1>Registro de Producto</h1>
     <div class="container">
-        <form action="#" method="post" enctype="multipart/form-data" class="small-form">
+        <form (submit)="crearProducto()" class="small-form">
             <div class="form-group">
                 <label for="nombre">Nombre:</label>
-                <input type="text" id="nombre" name="nombre" required>
+                <input type="text" id="nombre" name="nombre" required [(ngModel)]="nuevoProducto.nombre">
             </div>
             <div class="form-group">
                 <label for="codigo">Código:</label>
-                <input type="text" id="codigo" name="codigo" required>
+                <input type="text" id="codigo" name="codigo" required [(ngModel)]="nuevoProducto.codigo">
             </div>
             <div class="form-group">
                 <label for="seccion">Sección:</label>
-                <select id="seccion" name="seccion" required>
+                <select id="seccion" name="seccion" required [(ngModel)]="nuevoProducto.seccion">
                     <optgroup label="A">
                         <option value="1A">1A</option>
                         <option value="2A">2A</option>
@@ -47,26 +48,30 @@
                 </select>
             </div>
             <div class="form-group">
-                <label for="proveedorId">ID de Proveedor:</label>
-                <input type="text" id="proveedorId" name="proveedorId" required>
+                <label for="seccion">Proveedor:</label>
+                <select id="seccion" name="seccion" required [(ngModel)]="nuevoProducto.proveedorId">
+                    <option *ngFor="let proveedor of proveedores" [value]="proveedor.id">{{proveedor.nombre}}</option>
+                </select>
             </div>
+            
             <div class="form-group">
                 <label for="descripcion">Descripción:</label>
-                <textarea id="descripcion" name="descripcion" rows="4" required></textarea>
+                <textarea id="descripcion" name="descripcion" rows="4" required [(ngModel)]="nuevoProducto.descripcion"></textarea>
             </div>
             <div class="form-group">
                 <label for="imagen">Imagen:</label>
-                <input type="file" id="imagen" name="imagen" accept="image/*" required>
+                <input type="text" id="imagen" name="imagen" accept="image/*" required [(ngModel)]="nuevoProducto.imagen">
             </div>
             <div class="form-group">
                 <label for="precio">Precio:</label>
-                <input type="number" id="precio" name="precio" step="0.01" min="0" required>
+                <input type="number" id="precio" name="precio" step="0.01" min="0" required [(ngModel)]="nuevoProducto.precio">
             </div>
             <div class="form-group">
                 <label for="caducidad">Caducidad:</label>
-                <input type="date" id="caducidad" name="caducidad" required>
+                <input type="date" id="caducidad" name="caducidad" required [(ngModel)]="nuevoProducto.caducidad">
             </div>
             <button type="submit">Registrar Producto</button>
         </form>
     </div>
+</body>
 </html>

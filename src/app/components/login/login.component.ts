@@ -1,12 +1,15 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
+import { UsuariosService } from '../../services/usuarios/usuarios.service';
 
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
-  styleUrl: './login.component.css',
+  styleUrls: ['./login.component.css'],
 })
 export class LoginComponent {
+  constructor(private router: Router, private usuariosService: UsuariosService) {}
+
   togglePasswordVisibility() {
     const passwordInput = document.getElementById(
       'password'
@@ -19,14 +22,19 @@ export class LoginComponent {
     }
   }
 
-  constructor(private router: Router) {}
-
   iniciarSesion(usuario: string, contrasena: string) {
-    if (usuario === 'papas' && contrasena === 'con ketchup') {
-      this.router.navigate(['/inicio'])
-      this.router.navigate(['/listaP']);
-    } else {
-      alert('Usuario o contraseña incorrectos');
-    }
+    this.usuariosService.iniciarSesion(usuario, contrasena).subscribe(
+      (usuario) => {
+        this.router.navigate(['/inicio']);
+        this.router.navigate(['/listaP']);
+      },
+      (error) => {
+        alert('Usuario o contraseña incorrectos');
+      }
+    );
+  }
+
+  navigateToRegistrarUser() {
+    this.router.navigate(['/registraruser']);
   }
 }
